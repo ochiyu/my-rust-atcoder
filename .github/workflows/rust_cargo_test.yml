@@ -1,0 +1,21 @@
+name: Rust Cargo Test
+
+on:
+  pull_request:
+    branches: [ main ]
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+
+    steps:
+    - uses: actions/checkout@v2
+    - name: Install Rust
+      uses: actions-rs/toolchain@v1
+      with:
+        toolchain: stable
+        override: true
+    - name: Run cargo test
+      uses: actions-rs/cargo@v1
+      with:
+        command: test
